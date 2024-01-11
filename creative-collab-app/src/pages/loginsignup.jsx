@@ -6,7 +6,7 @@ import password from '../resources/password.png'
 
 
 const LoginSignup = () => {
-    const [action,setAction] = useState("Sign Up");
+    const [action,setAction] = useState("Log In");
 
   return (
     <div className='container'>
@@ -15,10 +15,11 @@ const LoginSignup = () => {
             <div className="underline"></div>
         </div>
         <div className="inputs">
-            <div className="input">
+            {action==="Log In"?<div></div>:<div className="input">
                 <img src={user} alt="" />
                 <input type="text" placeholder='username'/>
-            </div>
+            </div>}
+            
             <div className="input">
                 <img src={email} alt="" />
                 <input type="email" placeholder='email'/>
@@ -28,10 +29,10 @@ const LoginSignup = () => {
                 <input type="password" placeholder='password'/>
             </div>
         </div>
-        <div className="forgot-password">Forgot Password? <span>click here</span></div>
+        {action==="Sign Up"?<div></div>:<div className="forgot-password">Forgot Password? <span>click here</span></div>}
         <div className="submit-container">
-            <div className={action==="Log In"?"submit gray":"submit"}>Sign Up</div>
-            <div className={action==="Sign Up"?"submit gray":"submit"}>Log In</div>
+            <div className={action==="Log In"?"submit gray":"submit"} onClick={()=>{setAction("Sign Up")}}>Sign Up</div>
+            <div className={action==="Sign Up"?"submit gray":"submit"} onClick={()=>{setAction("Log In")}}>Log In</div>
         </div>
     </div>
   )
