@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Collab</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        section {
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #artworkDisplay {
+            margin-top: 20px;
+        }
+
+        .artwork {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .artwork img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .comments {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .comments p {
+            margin: 0;
+        }
+
+        input[type=checkbox]{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Creative Collab Section -->
+<section id="creativeCollab">
+    <h2>CreativeCollab - What masterpiece will you share today?</h2>
+
+    <!-- Artwork Upload Form -->
+    <form id="artworkForm">
+        <span class="title">Upload Your Artwork:</span>
+        <input type="file" id="artwork" name="artwork" accept="image/*" required>
+        <span class="title">Tags:</span>
+        <input type="checkbox" id="fantasytag" name ="fantasytag" value="Fantasy">
+        <label for="fantasytag">Fantasy</label><br>
+        <input type="checkbox" id="moderntag" name ="moderntag" value="Modern">
+        <label for="modern">Modern</label><br>
+        <input type="checkbox" id="scifitag" name ="scifitag" value="Scifi">
+        <label for="scifitag">Sci-Fi</label><br>
+        <span class="title">Add a Comment:</span>
+        <textarea id="comment" name="comment" rows="4" required></textarea>
+
+        <button type="submit">Post Artwork</button>
+    </form>
+
+    <!-- Artwork Display Area -->
+    <div id="artworkDisplay">
+        <!-- Artwork and comments will be dynamically added here -->
+    </div>
+</section>
+
+<!-- JavaScript (Sample, requires additional functionality for image handling) -->
+<script>
+    document.getElementById("artworkForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var artworkInput = document.getElementById("artwork");
+        var commentInput = document.getElementById("comment");
+
+        var artworkDisplay = document.getElementById("artworkDisplay");
+
+        // Create a new artwork container
+        var artworkContainer = document.createElement("div");
+        artworkContainer.classList.add("artwork");
+
+        // Display the uploaded image (requires server-side handling for security)
+        var img = document.createElement("img");
+        img.src = URL.createObjectURL(artworkInput.files[0]);
+        artworkContainer.appendChild(img);
+
+        // Display the comment
+        var commentsDiv = document.createElement("div");
+        commentsDiv.classList.add("comments");
+        var commentParagraph = document.createElement("p");
+        commentParagraph.textContent = commentInput.value;
+        commentsDiv.appendChild(commentParagraph);
+
+        artworkContainer.appendChild(commentsDiv);
+
+        // Append the artwork container to the display area
+        artworkDisplay.appendChild(artworkContainer);
+
+        // Clear form inputs
+        artworkInput.value = "";
+        commentInput.value = "";
+    });
+</script>
+
+</body>
+</html>
