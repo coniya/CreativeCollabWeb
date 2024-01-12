@@ -13,3 +13,4 @@ Contents
    usage
    api
    updated_post
+   discussion_forum_updated
