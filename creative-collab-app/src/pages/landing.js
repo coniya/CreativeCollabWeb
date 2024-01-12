@@ -21,11 +21,11 @@ function App() {
       </div>
           <script>
               function logIn(){
-                  //add code to go to log in page
+                  <Home/>
               }
 
               function signUp(){
-                  //add code to go to log in page
+                  <Home/>
               }
 
               function googleSignIn(){
