@@ -12,3 +12,4 @@ Contents
 
    usage
    api
+   update_post
