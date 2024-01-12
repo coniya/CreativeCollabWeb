@@ -1,4 +1,4 @@
-import { logo, google, facebook } from './constants';
+import { logo, google, facebook } from './resources';
 import './App.css';
 import './pages/loginSignup/loginSignup.css';
 
